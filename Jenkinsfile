@@ -1,14 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Check the software versions') {
+        stage('Build the project') {
             steps {
-                echo 'Checking all the software versions installed in jenkins master'
-                sh 'java --version'
-                sh 'mvn --version'
-                sh 'git --version'
-                sh 'docker version'
-                echo 'Checked all the software versions in jenkins master'
+                echo 'Packaging the source code...'
+                sh 'mavn clean package'
+                echo 'Packaged the source code successfully...'
             }
         }
     }
