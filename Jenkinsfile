@@ -1,9 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Sanity Check') {
+        stage('Check the software versions') {
             steps {
-                echo 'Sanity check on initial pipeline'
+                sh 'java --version'
+                sh 'mvn --version'
+                sh 'docker version'
             }
         }
     }
