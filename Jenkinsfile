@@ -1,11 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Cloning') {
+        stage('Sanity Check') {
             steps {
-                echo 'Cloning GitHub repository...'
-                git branch: 'main', url: 'https://github.com/VinothMessi/master-java-framework.git'
-                echo 'Repository cloned successfully...'
+                echo 'Sanity check on initial pipeline'
             }
         }
     }
