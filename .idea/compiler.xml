@@ -9,5 +9,6 @@
         <module name="master-java-framework" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>
