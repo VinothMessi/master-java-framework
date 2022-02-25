@@ -15,6 +15,8 @@
         <java.version>11</java.version>
         <surefire.version>3.0.0-M5</surefire.version>
         <owner.version>1.0.12</owner.version>
+        <selenium.version>4.1.2</selenium.version>
+        <webdrivermanager.version>5.1.0</webdrivermanager.version>
         <testng.version>7.5</testng.version>
     </properties>
 
@@ -25,7 +27,18 @@
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
