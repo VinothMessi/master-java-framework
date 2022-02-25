@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Master Framework" verbose="1">
+    <test name="Unit Tests">
+        <classes>
+            <class name="org.wipro.auspost.testcases.SanityTest"/>
+        </classes>
+    </test>
+</suite>

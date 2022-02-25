@@ -6,6 +6,6 @@ import org.wipro.auspost.properties.FromProperties;
 public class SanityTest {
     @Test
     public void sanityTest() {
-        System.out.println(FromProperties.get().browser());
+        System.out.println("My Browser:" + FromProperties.get().browser());
     }
 }
