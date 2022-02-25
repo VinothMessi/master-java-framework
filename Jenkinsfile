@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Static code analysis using sonarqube...'
                 withSonarQubeEnv('sonarqube') {
-                  sh 'mvn sonar:sonar -Dsonar.projectKey=master-java-framework -Dsonar.sources=. -Dsonar.test.exclusions=src/test/java/**'
+                  sh 'mvn clean sonar:sonar -Dsonar.projectKey=master-java-framework -Dsonar.sources=src/* -Dsonar.test.inclusions=src/test/java/*'
                 }
                 echo 'Source code analyzed successfully...'
             }
