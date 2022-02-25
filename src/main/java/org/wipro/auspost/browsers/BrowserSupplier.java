@@ -5,10 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.wipro.auspost.enums.Browsers;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
@@ -42,6 +46,27 @@ public class BrowserSupplier {
         option.setHeadless(true);
         return new FirefoxDriver(option);
     };
+    private static final Supplier<WebDriver> remoteChrome = () -> {
+        try {
+            return new RemoteWebDriver(new URL("http://localhost:4444"), new ChromeOptions());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Unable to create remoteChrome session");
+        }
+    };
+    private static final Supplier<WebDriver> remoteEdge = () -> {
+        try {
+            return new RemoteWebDriver(new URL("http://localhost:4444"), new EdgeOptions());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Unable to create remoteEdge session");
+        }
+    };
+    private static final Supplier<WebDriver> remoteFirefox = () -> {
+        try {
+            return new RemoteWebDriver(new URL("http://localhost:4444"), new FirefoxOptions());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Unable to create remoteFirefox session");
+        }
+    };
 
     static {
         map.put(Browsers.CHROME, chrome);
@@ -49,6 +74,9 @@ public class BrowserSupplier {
         map.put(Browsers.FIREFOX, firefox);
         map.put(Browsers.HEADLESSCHROME, headlessChrome);
         map.put(Browsers.HEADLESSFIREFOX, headlessFirefox);
+        map.put(Browsers.REMOTECHROME, remoteChrome);
+        map.put(Browsers.REMOTEEDGE, remoteEdge);
+        map.put(Browsers.REMOTEFIREFOX, remoteFirefox);
     }
 
     public static WebDriver launch(Browsers browserType) {
