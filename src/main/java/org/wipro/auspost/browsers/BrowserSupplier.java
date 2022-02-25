@@ -9,14 +9,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.wipro.auspost.enums.Browsers;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public class BrowserSupplier {
     private BrowserSupplier() {
     }
 
-    private static final HashMap<Browsers, Supplier<WebDriver>> map = new HashMap<>();
+    private static final EnumMap<Browsers, Supplier<WebDriver>> map = new EnumMap<>(Browsers.class);
 
     private static final Supplier<WebDriver> chrome = () -> {
         WebDriverManager.chromedriver().setup();
