@@ -4,7 +4,7 @@ pipeline {
         stage('Maven Packaging') {
             steps {
                 echo 'Packaging the source code...'
-                sh 'mvn clean package'
+                sh 'mvn clean package -DskipTests'
                 echo 'Packaged the source code successfully...'
             }
         }
