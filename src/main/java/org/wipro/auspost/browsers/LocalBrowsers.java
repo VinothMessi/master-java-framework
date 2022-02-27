@@ -1,12 +1,9 @@
 package org.wipro.auspost.browsers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.wipro.auspost.browsers.managers.ChromeManager;
+import org.wipro.auspost.browsers.managers.EdgeManager;
+import org.wipro.auspost.browsers.managers.FirefoxManager;
 import org.wipro.auspost.enums.Browsers;
 
 import java.util.EnumMap;
@@ -18,36 +15,19 @@ public class LocalBrowsers {
 
     private static final EnumMap<Browsers, Supplier<WebDriver>> map = new EnumMap<>(Browsers.class);
 
-    private static final Supplier<WebDriver> chrome = () -> {
-        WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
-    };
-    private static final Supplier<WebDriver> edge = () -> {
-        WebDriverManager.edgedriver().setup();
-        return new EdgeDriver();
-    };
-    private static final Supplier<WebDriver> firefox = () -> {
-        WebDriverManager.firefoxdriver().setup();
-        return new FirefoxDriver();
-    };
-    private static final Supplier<WebDriver> headlessChrome = () -> {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions option = new ChromeOptions();
-        option.setHeadless(true);
-        return new ChromeDriver(option);
-    };
-    private static final Supplier<WebDriver> headlessFirefox = () -> {
-        WebDriverManager.firefoxdriver().setup();
-        FirefoxOptions option = new FirefoxOptions();
-        option.setHeadless(true);
-        return new FirefoxDriver(option);
-    };
+    private static final Supplier<WebDriver> chrome = ChromeManager::getDriver;
+    private static final Supplier<WebDriver> edge = EdgeManager::getDriver;
+    private static final Supplier<WebDriver> firefox = FirefoxManager::getDriver;
+    private static final Supplier<WebDriver> headlessChrome = () -> ChromeManager.getDriver(true);
+    private static final Supplier<WebDriver> headlessEdge = () -> EdgeManager.getDriver(true);
+    private static final Supplier<WebDriver> headlessFirefox = () -> FirefoxManager.getDriver(true);
 
     static {
         map.put(Browsers.CHROME, chrome);
         map.put(Browsers.EDGE, edge);
         map.put(Browsers.FIREFOX, firefox);
         map.put(Browsers.HEADLESS_CHROME, headlessChrome);
+        map.put(Browsers.HEADLESS_EDGE, headlessEdge);
         map.put(Browsers.HEADLESS_FIREFOX, headlessFirefox);
     }
 

@@ -5,6 +5,7 @@ public enum Browsers {
     EDGE,
     FIREFOX,
     HEADLESS_CHROME,
+    HEADLESS_EDGE,
     HEADLESS_FIREFOX,
     REMOTE_CHROME,
     REMOTE_EDGE,

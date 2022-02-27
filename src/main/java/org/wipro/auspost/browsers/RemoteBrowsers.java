@@ -1,14 +1,12 @@
 package org.wipro.auspost.browsers;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.wipro.auspost.browsers.managers.ChromeManager;
+import org.wipro.auspost.browsers.managers.EdgeManager;
+import org.wipro.auspost.browsers.managers.FirefoxManager;
 import org.wipro.auspost.enums.Browsers;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
@@ -21,21 +19,21 @@ public class RemoteBrowsers {
 
     private static final Supplier<WebDriver> remoteChrome = () -> {
         try {
-            return new RemoteWebDriver(new URL(HUB), new ChromeOptions());
+            return ChromeManager.getDriver(HUB);
         } catch (MalformedURLException e) {
             throw new RuntimeException("Unable to create remoteChrome session");
         }
     };
     private static final Supplier<WebDriver> remoteEdge = () -> {
         try {
-            return new RemoteWebDriver(new URL(HUB), new EdgeOptions());
+            return EdgeManager.getDriver(HUB);
         } catch (MalformedURLException e) {
             throw new RuntimeException("Unable to create remoteEdge session");
         }
     };
     private static final Supplier<WebDriver> remoteFirefox = () -> {
         try {
-            return new RemoteWebDriver(new URL(HUB), new FirefoxOptions());
+            return FirefoxManager.getDriver(HUB);
         } catch (MalformedURLException e) {
             throw new RuntimeException("Unable to create remoteFirefox session");
         }
