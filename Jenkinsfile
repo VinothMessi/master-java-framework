@@ -17,5 +17,12 @@ pipeline {
                 echo 'Source code analyzed successfully...'
             }
         }
+        stage('Test Execution') {
+            steps {
+                echo 'Executing the sanity test cases...'
+                bat 'mvn clean test'
+                echo 'Test execution completed successfully...'
+            }
+        }
     }
 }
