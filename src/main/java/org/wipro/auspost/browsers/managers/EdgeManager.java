@@ -13,11 +13,6 @@ public final class EdgeManager {
     private EdgeManager() {
     }
 
-    public static WebDriver getDriver() {
-        WebDriverManager.edgedriver().setup();
-        return new EdgeDriver();
-    }
-
     public static WebDriver getDriver(Boolean flag) {
         WebDriverManager.edgedriver().setup();
         EdgeOptions option = new EdgeOptions();

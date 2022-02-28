@@ -13,11 +13,6 @@ public final class FirefoxManager {
     private FirefoxManager() {
     }
 
-    public static WebDriver getDriver() {
-        WebDriverManager.firefoxdriver().setup();
-        return new FirefoxDriver();
-    }
-
     public static WebDriver getDriver(Boolean flag) {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions option = new FirefoxOptions();

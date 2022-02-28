@@ -13,11 +13,6 @@ public final class ChromeManager {
     private ChromeManager() {
     }
 
-    public static WebDriver getDriver() {
-        WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
-    }
-
     public static WebDriver getDriver(Boolean flag) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions option = new ChromeOptions();
