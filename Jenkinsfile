@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'windows_slave' }
     stages {
         stage('Maven Packaging') {
             steps {
