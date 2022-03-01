@@ -33,4 +33,12 @@ public class SanityTest {
         browser.get("http://www.google.com");
         browser.quit();
     }
+
+    @Test
+    public void remoteProperties() {
+        System.out.println(Properties.get().platform());
+        System.out.println(Properties.get().protocol());
+        System.out.println(Properties.get().host());
+        System.out.println(Properties.get().port());
+    }
 }

@@ -1,6 +1,6 @@
 package org.wipro.auspost.browsers.enums;
 
-public enum RemoteExecutionTool {
+public enum RemotePlatforms {
     SELENIUM,
     SELENOID,
     BROWSER_STACK

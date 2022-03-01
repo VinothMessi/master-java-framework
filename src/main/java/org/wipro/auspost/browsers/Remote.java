@@ -5,6 +5,7 @@ import org.wipro.auspost.browsers.managers.ChromeManager;
 import org.wipro.auspost.browsers.managers.EdgeManager;
 import org.wipro.auspost.browsers.managers.FirefoxManager;
 import org.wipro.auspost.browsers.enums.BrowserType;
+import org.wipro.auspost.properties.Properties;
 
 import java.net.MalformedURLException;
 import java.util.EnumMap;
@@ -14,7 +15,8 @@ public class Remote {
     private Remote() {
     }
 
-    private static final String HUB = "http://localhost:4444";
+    private static final String HUB = Properties.get().protocol() +
+            "://" + Properties.get().host() + ":" + Properties.get().port();
     private static final EnumMap<BrowserType, Supplier<WebDriver>> map = new EnumMap<>(BrowserType.class);
 
     private static final Supplier<WebDriver> remoteChrome = () -> {

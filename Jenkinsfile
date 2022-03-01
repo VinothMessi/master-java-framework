@@ -20,7 +20,7 @@ pipeline {
         stage('Test Execution') {
             steps {
                 echo 'Executing the sanity test cases...'
-                bat 'mvn test -Dbrowser=edge'
+                bat 'mvn test -Dbrowser=chrome'
                 echo 'Test execution completed successfully...'
             }
         }
